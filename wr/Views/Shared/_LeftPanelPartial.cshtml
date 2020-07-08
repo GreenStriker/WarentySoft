@@ -7,7 +7,7 @@
     <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="@Url.Action("Dashboard", "Home")"><h1>@*Warranty*@ Reminder</h1></a>
+                <a href="@Url.Action("Dashboard", "Home")"><h1>WR</h1></a>
                 <strong><img src="~/img/logo/logosn.png" alt="" /></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -23,8 +23,18 @@
 
                             </ul>
                         </li>
- 
 
+                        <li>
+                            <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i class="fa big-icon fa-flask icon-wrap"></i> <span class="mini-click-non">Product Setup</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+
+                                <li><a href="@Url.Action("Index", "Products")"><i class="fa fa-file-pdf-o sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Product Setup</span></a></li>
+
+                               
+
+
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

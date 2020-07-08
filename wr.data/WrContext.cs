@@ -5,19 +5,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace wr.entity
 {
-    public partial class WrdbContext : DbContext
+    public partial class WrContext : DbContext
     {
-        public WrdbContext()
+        public WrContext()
         {
         }
 
-        public WrdbContext(DbContextOptions<WrdbContext> options)
+        public WrContext(DbContextOptions<WrContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Branch> Branch { get; set; }
         public virtual DbSet<Color> Color { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<Theme> Theme { get; set; }
         public virtual DbSet<User> User { get; set; }
@@ -25,8 +26,6 @@ namespace wr.entity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
-
             modelBuilder.Entity<Branch>(entity =>
             {
                 entity.Property(e => e.Address).HasMaxLength(500);
@@ -57,6 +56,17 @@ namespace wr.entity
                 entity.Property(e => e.Sec).HasMaxLength(50);
 
                 entity.Property(e => e.Third).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(e => e.Pid);
+
+                entity.Property(e => e.Description).HasMaxLength(500);
+
+                entity.Property(e => e.ImageLink).HasMaxLength(500);
+
+                entity.Property(e => e.Name).HasMaxLength(500);
             });
 
             modelBuilder.Entity<Settings>(entity =>

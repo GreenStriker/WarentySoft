@@ -21,8 +21,8 @@ namespace wr.ioc
         public static void RegisterVMSServiceInstance(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("dev");
-            services.AddDbContext<WrdbContext>(options => options.UseSqlServer(connectionString));
-            services.AddScoped<DbContext, WrdbContext>();
+            services.AddDbContext<WrContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<DbContext, WrContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             
@@ -34,9 +34,10 @@ namespace wr.ioc
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserService, UserService>();
-         
-      
-         
+
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
+
             services.AddTransient<IBranchRepository, BranchRepository>();
             services.AddTransient<IBranchService, BranchService>();
 
